@@ -95,8 +95,8 @@ let tab='home',sub='phone',q='';
 const NAV=[['learn','LEARN'],['protect','PROTECT'],['check','CHECK'],['threats','THREATS'],['respond','RESPOND']];
 $('#nav').innerHTML=NAV.map(n=>`<button data-t="${n[0]}">${n[1]}</button>`).join('');
 $('#nav').onclick=e=>{const t=e.target.dataset.t;if(t){tab=t;q='';go()}};
-function top(){return`<div class="top"><img src="icon.svg" alt="Home" onclick="tab='home';q='';go()"><input id="q" placeholder="Search: phishing, stolen phone, Wi-Fi..." value="${q}" oninput="q=this.value;search()" aria-label="Search"></div>`}
-function go(){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==tab));const f={home,learn,protect,check,threats,respond}[tab];H(top()+'<div id="v">'+f()+'</div><p class="ft">PixelProTech Solutions (Pty) Ltd · Reg 2026/622131/07 · South Africa<br>Pixel Protect teaches and guides. It cannot see inside your device.</p>');scrollTo(0,0)}
+function bar(){return`<div class="top"><img src="icon.svg" alt="Home" onclick="tab='home';q='';go()"><input id="q" placeholder="Search: phishing, stolen phone, Wi-Fi..." value="${q}" oninput="q=this.value;search()" aria-label="Search"></div>`}
+function go(){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==tab));const f={home,learn,protect,check,threats,respond}[tab];H(bar()+'<div id="v">'+f()+'</div><p class="ft">PixelProTech Solutions (Pty) Ltd · Reg 2026/622131/07 · South Africa<br>Pixel Protect teaches and guides. It cannot see inside your device.</p>');scrollTo(0,0)}
 function search(){if(!q.trim()){const f={home,learn,protect,check,threats,respond}[tab];$('#v').innerHTML=f();return}
 const k=q.toLowerCase(),r=[];
 P.forEach(x=>{if((x[2]+x[3]+x[5]).toLowerCase().includes(k))r.push(['Protect › '+x[2],`tab='protect';sub='${x[0]}';go()`])});
